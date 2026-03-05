@@ -1,7 +1,44 @@
 import React from "react";
+import SEO from "../components/SEO";
 import "./Testimonials.css";
 
 const Testimonials = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: [
+      {
+        "@type": "Review",
+        position: 1,
+        author: {
+          "@type": "Person",
+          name: "Dr. Priya Sharma",
+        },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+        },
+        reviewBody:
+          "PixelNest transformed our outdated website into a modern platform that significantly increased patient enquiries.",
+      },
+      {
+        "@type": "Review",
+        position: 2,
+        author: {
+          "@type": "Person",
+          name: "Rajesh Kumar",
+        },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+        },
+        reviewBody:
+          "The design quality and performance optimisation exceeded expectations. Highly professional team.",
+      },
+    ],
+  };
   const testimonials = [
     {
       name: "Dr. Priya Sharma",
@@ -30,45 +67,54 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className="testimonials-page">
-      <section className="page-hero">
-        <div className="container">
-          <h1 className="page-title fade-in-up">Client Testimonials</h1>
-          <p className="page-subtitle fade-in-up">
-            Success stories from businesses we've helped transform
-          </p>
-        </div>
-      </section>
-
-      <section className="section testimonials-section">
-        <div className="container">
-          <div className="testimonials-grid-full">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="glass-card testimonial-card-full">
-                <div className="stars">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i}>⭐</span>
-                  ))}
-                </div>
-                <p className="testimonial-text-full">"{testimonial.text}"</p>
-                <div className="testimonial-author-full">
-                  <div className="author-avatar">
-                    {testimonial.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </div>
-                  <div className="author-info">
-                    <strong>{testimonial.name}</strong>
-                    <span>{testimonial.role}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+    <>
+      <SEO
+        title="Client Testimonials - Success Stories | PixelNest Web Development"
+        description="Read real success stories from businesses we've helped transform with our web development services. See how PixelNest delivers exceptional results and client satisfaction."
+        keywords="client testimonials, customer reviews, success stories, web development reviews, PixelNest reviews"
+        url="https://pixelnest.example.com/testimonials"
+        structuredData={structuredData}
+      />
+      <div className="testimonials-page">
+        <section className="page-hero">
+          <div className="container">
+            <h1 className="page-title fade-in-up">Client Testimonials</h1>
+            <p className="page-subtitle fade-in-up">
+              Success stories from businesses we've helped transform
+            </p>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        <section className="section testimonials-section">
+          <div className="container">
+            <div className="testimonials-grid-full">
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="glass-card testimonial-card-full">
+                  <div className="stars">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <span key={i}>⭐</span>
+                    ))}
+                  </div>
+                  <p className="testimonial-text-full">"{testimonial.text}"</p>
+                  <div className="testimonial-author-full">
+                    <div className="author-avatar">
+                      {testimonial.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </div>
+                    <div className="author-info">
+                      <strong>{testimonial.name}</strong>
+                      <span>{testimonial.role}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 
