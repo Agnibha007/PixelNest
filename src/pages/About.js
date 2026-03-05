@@ -73,7 +73,7 @@ const About = () => {
             <div className="glass-card team-card">
               <div className="team-image">AM</div>
               <h3>Agnibha Mukherjee</h3>
-              <p className="team-role">Founder</p>
+              <p className="team-role">Co-Founder</p>
               <p className="team-bio">
                 Visionary technologist with a passion for building digital
                 solutions that create real business impact. Agnibha leads the
@@ -90,7 +90,7 @@ const About = () => {
             <div className="glass-card team-card">
               <div className="team-image">AS</div>
               <h3>Aarush Singh</h3>
-              <p className="team-role">Co-Founder</p>
+              <p className="team-role">Founder</p>
               <p className="team-bio">
                 Strategic leader focused on business growth and building strong
                 client relationships. Aarush oversees business operations and

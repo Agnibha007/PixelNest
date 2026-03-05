@@ -179,7 +179,7 @@ const Home = () => {
             <div className="glass-card founder-card">
               <div className="founder-image">AM</div>
               <h3>Agnibha Mukherjee</h3>
-              <p className="founder-role">Founder</p>
+              <p className="founder-role">Co-Founder</p>
               <p className="founder-bio">
                 Visionary technologist with a passion for building digital
                 solutions that create real business impact.
@@ -193,7 +193,7 @@ const Home = () => {
             <div className="glass-card founder-card">
               <div className="founder-image">AS</div>
               <h3>Aarush Singh</h3>
-              <p className="founder-role">Co-Founder</p>
+              <p className="founder-role">Founder</p>
               <p className="founder-bio">
                 Strategic leader focused on business growth and building strong
                 client relationships.
