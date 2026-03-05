@@ -10,8 +10,8 @@ const Home = () => {
     mainEntity: {
       "@type": "Organization",
       name: "PixelNest",
-      url: "https://pixelnest.example.com",
-      logo: "https://pixelnest.example.com/pixelnest.png",
+      url: "https://pixelneststudios.tech",
+      logo: "https://pixelneststudios.tech/pixelnest.png",
       description: "Premium web development and digital solutions",
       offers: {
         "@type": "AggregateOffer",
@@ -107,7 +107,7 @@ const Home = () => {
         title="PixelNest - Premium Web Development & Digital Solutions"
         description="Transform your business with premium web development services. Custom websites, React applications, UI/UX design, and SEO optimization. Get a free consultation today."
         keywords="web development, react development, UI/UX design, website design, SEO optimization, digital solutions, custom websites, performance optimization"
-        url="https://pixelnest.example.com/"
+        url="https://pixelneststudios.tech/"
         structuredData={structuredData}
       />
       <div className="home">

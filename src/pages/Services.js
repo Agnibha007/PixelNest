@@ -144,7 +144,7 @@ const Services = () => {
         title="Our Services - Web Development, React Apps & UI/UX Design | PixelNest"
         description="Explore PixelNest's comprehensive web development services: custom websites, React applications, UI/UX design, performance optimization, and SEO-ready architecture. Get results-driven solutions."
         keywords="web development services, react development, UI/UX design services, website design, performance optimization, SEO services, custom web applications"
-        url="https://pixelnest.example.com/services"
+        url="https://pixelneststudios.tech/services"
         structuredData={structuredData}
       />
       <div className="services-page">

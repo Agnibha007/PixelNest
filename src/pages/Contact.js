@@ -44,7 +44,7 @@ const Contact = () => {
         title="Contact Us - Get Your Free Consultation | PixelNest Web Development"
         description="Ready to transform your digital presence? Contact PixelNest for a free consultation. Fast response, no obligation quotes. Let's build something exceptional together."
         keywords="contact PixelNest, web development consultation, free quote, get in touch, hire web developer"
-        url="https://pixelnest.example.com/contact"
+        url="https://pixelneststudios.tech/contact"
         structuredData={structuredData}
       />
       <div className="contact-page">

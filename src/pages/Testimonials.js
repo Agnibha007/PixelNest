@@ -72,7 +72,7 @@ const Testimonials = () => {
         title="Client Testimonials - Success Stories | PixelNest Web Development"
         description="Read real success stories from businesses we've helped transform with our web development services. See how PixelNest delivers exceptional results and client satisfaction."
         keywords="client testimonials, customer reviews, success stories, web development reviews, PixelNest reviews"
-        url="https://pixelnest.example.com/testimonials"
+        url="https://pixelneststudios.tech/testimonials"
         structuredData={structuredData}
       />
       <div className="testimonials-page">

@@ -33,7 +33,7 @@ const About = () => {
         title="About PixelNest - Our Mission, Vision & Team | Premium Web Development"
         description="Discover PixelNest's story, meet our expert team, and learn how we're transforming businesses through innovative web development and digital solutions."
         keywords="about PixelNest, web development team, digital agency, our mission, company values, leadership team"
-        url="https://pixelnest.example.com/about"
+        url="https://pixelneststudios.tech/about"
         structuredData={structuredData}
       />
       <div className="about-page">

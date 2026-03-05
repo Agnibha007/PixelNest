@@ -6,8 +6,8 @@ const SEO = ({
   description = "PixelNest builds high-performance websites and React applications that drive business growth. Expert web development, UI/UX design, and SEO optimization services.",
   keywords = "web development, react development, UI/UX design, website design, SEO optimization, digital solutions",
   author = "PixelNest",
-  url = "https://pixelnest.example.com",
-  image = "https://pixelnest.example.com/og-image.png",
+  url = "https://pixelneststudios.tech",
+  image = "https://pixelneststudios.tech/og-image.png",
   type = "website",
   structuredData = null,
 }) => {
@@ -20,7 +20,7 @@ const SEO = ({
     publisher: {
       "@type": "Organization",
       name: "PixelNest",
-      url: "https://pixelnest.example.com",
+      url: "https://pixelneststudios.tech",
     },
   };
 
