@@ -1,241 +1,122 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
+import { 
+  Layers, 
+  Cpu, 
+  ArrowRight,
+  Search,
+  Zap
+} from "lucide-react";
 import "./Services.css";
 
 const Services = () => {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: [
-      {
-        "@type": "Service",
-        position: 1,
-        name: "Website Design & Development",
-        description:
-          "Custom, high-performance websites built with modern technologies",
-        provider: {
-          "@type": "Organization",
-          name: "PixelNest",
-        },
-      },
-      {
-        "@type": "Service",
-        position: 2,
-        name: "React Web Applications",
-        description: "Scalable, interactive web applications",
-        provider: {
-          "@type": "Organization",
-          name: "PixelNest",
-        },
-      },
-      {
-        "@type": "Service",
-        position: 3,
-        name: "UI/UX Design",
-        description: "Intuitive interfaces designed for conversions",
-        provider: {
-          "@type": "Organization",
-          name: "PixelNest",
-        },
-      },
-      {
-        "@type": "Service",
-        position: 4,
-        name: "SEO-Ready Website Architecture",
-        description: "Websites optimized for search engines",
-        provider: {
-          "@type": "Organization",
-          name: "PixelNest",
-        },
-      },
-    ],
-  };
-  const services = [
+  const serviceList = [
     {
-      icon: "🎨",
-      title: "Website Design & Development",
-      description:
-        "Custom, high-performance websites built with modern technologies that represent your brand and drive conversions.",
-      benefits: [
-        "Responsive design across all devices",
-        "Fast loading speeds",
-        "SEO-optimized structure",
-        "Modern, professional aesthetics",
-      ],
-      results:
-        "Increased credibility, higher conversion rates, and improved search rankings",
+      id: "01",
+      title: "Product Strategy",
+      description: "We partner with founders to define market opportunities, product roadmaps, and technical feasibility.",
+      deliverables: ["Market Analysis", "Technical Roadmap", "MVP Definition"],
+      icon: <Search size={24} strokeWidth={1.5} />
     },
     {
-      icon: "⚛️",
-      title: "React Web Applications",
-      description:
-        "Scalable, interactive web applications that deliver exceptional user experiences and handle complex business logic.",
-      benefits: [
-        "Component-based architecture",
-        "Real-time data updates",
-        "Smooth user interactions",
-        "Easy maintenance and scaling",
-      ],
-      results:
-        "Enhanced user engagement, reduced bounce rates, and streamlined operations",
+      id: "02",
+      title: "Interface Design",
+      description: "Creating precise, design-led systems that communicate trust and engineering quality.",
+      deliverables: ["UI/UX Systems", "Prototyping", "Design Language"],
+      icon: <Layers size={24} strokeWidth={1.5} />
     },
     {
-      icon: "✨",
-      title: "UI/UX Design",
-      description:
-        "Intuitive interfaces designed with user psychology in mind, converting visitors into loyal customers.",
-      benefits: [
-        "User-centered design approach",
-        "Conversion-optimized layouts",
-        "Accessibility compliance",
-        "Brand consistency",
-      ],
-      results:
-        "Better user satisfaction, increased conversions, and stronger brand identity",
+      id: "03",
+      title: "React Development",
+      description: "Building fast, secure, and scalable front-end architectures using the latest ecosystem standards.",
+      deliverables: ["Custom Components", "State Management", "API Integration"],
+      icon: <Cpu size={24} strokeWidth={1.5} />
     },
     {
-      icon: "🔄",
-      title: "Business Website Revamps",
-      description:
-        "Transform outdated websites into modern digital experiences that reflect your current business value.",
-      benefits: [
-        "Modern design refresh",
-        "Improved functionality",
-        "Better performance",
-        "Enhanced mobile experience",
-      ],
-      results:
-        "Renewed brand perception, increased traffic, and improved customer trust",
-    },
-    {
-      icon: "⚡",
-      title: "Performance Optimization",
-      description:
-        "Lightning-fast load times that improve search rankings, user experience, and conversion rates.",
-      benefits: [
-        "Code optimization",
-        "Image compression",
-        "Caching strategies",
-        "CDN integration",
-      ],
-      results:
-        "Higher search rankings, lower bounce rates, and increased revenue",
-    },
-    {
-      icon: "🔍",
-      title: "SEO-Ready Website Architecture",
-      description:
-        "Websites built from the ground up with search engine optimization best practices for maximum visibility.",
-      benefits: [
-        "Semantic HTML structure",
-        "Optimized meta tags",
-        "Fast Core Web Vitals",
-        "Mobile-first indexing",
-      ],
-      results:
-        "Improved organic traffic, better search visibility, and qualified leads",
-    },
+      id: "04",
+      title: "Performance Engineering",
+      description: "Optimizing every millisecond of the user journey to maximize conversion and search engine ranking.",
+      deliverables: ["Core Web Vitals", "Asset Optimization", "Code Splitting"],
+      icon: <Zap size={24} strokeWidth={1.5} />
+    }
+  ];
+
+  const process = [
+    { step: "01", title: "Discovery", description: "In-depth technical and business audit to align goals." },
+    { step: "02", title: "Strategy", description: "Mapping out the optimal path from concept to deployment." },
+    { step: "03", title: "Execution", description: "Disciplined design and engineering with weekly milestones." },
+    { step: "04", title: "Optimization", description: "Rigorous testing and performance tuning pre-launch." }
   ];
 
   return (
     <>
       <SEO
-        title="Our Services - Web Development, React Apps & UI/UX Design | PixelNest"
-        description="Explore PixelNest's comprehensive web development services: custom websites, React applications, UI/UX design, performance optimization, and SEO-ready architecture. Get results-driven solutions."
-        keywords="web development services, react development, UI/UX design services, website design, performance optimization, SEO services, custom web applications"
+        title="Capabilities - PixelNest"
+        description="Premium digital product capabilities from strategy to full-stack engineering."
         url="https://pixelneststudios.tech/services"
-        structuredData={structuredData}
       />
+      
       <div className="services-page">
-        <section className="page-hero">
+        <section className="services-hero">
           <div className="container">
-            <h1 className="page-title fade-in-up">Our Services</h1>
+            <span className="label-badge fade-in-up">Studio Expertise</span>
+            <h1 className="page-title fade-in-up">Capabilities</h1>
             <p className="page-subtitle fade-in-up">
-              Comprehensive digital solutions tailored to your business goals
+              We provide comprehensive digital solutions for ambitious brands who demand technical excellence and design discipline.
             </p>
           </div>
         </section>
 
-        <section className="section services-detailed">
+        <section className="section capabilities-grid-section">
           <div className="container">
-            {services.map((service, index) => (
-              <div key={index} className="service-detailed glass-card">
-                <div className="service-header">
-                  <div className="service-icon-large">{service.icon}</div>
-                  <div>
-                    <h2>{service.title}</h2>
-                    <p className="service-description">{service.description}</p>
+            <div className="capabilities-detailed-list">
+              {serviceList.map((service, index) => (
+                <div key={index} className="service-row">
+                  <div className="service-icon-box">{service.icon}</div>
+                  <div className="service-info">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
                   </div>
-                </div>
-                <div className="service-content">
-                  <div className="service-benefits">
-                    <h3>What You Get</h3>
+                  <div className="service-deliverables">
+                    <span className="mono label">DELIVERABLES</span>
                     <ul>
-                      {service.benefits.map((benefit, i) => (
-                        <li key={i}>✓ {benefit}</li>
+                      {service.deliverables.map((d, i) => (
+                        <li key={i}>{d}</li>
                       ))}
                     </ul>
                   </div>
-                  <div className="service-results">
-                    <h3>Expected Results</h3>
-                    <p>{service.results}</p>
-                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
         <section className="section process-section">
           <div className="container">
-            <h2 className="section-title">Our Process</h2>
-            <p className="section-subtitle">
-              A proven methodology that delivers exceptional results
-            </p>
+            <div className="section-header">
+              <span className="label-badge">Methodology</span>
+              <h2 className="section-title">The Process</h2>
+            </div>
+            
             <div className="process-grid">
-              <div className="process-step">
-                <div className="step-number">01</div>
-                <h3>Discovery</h3>
-                <p>Understanding your business, goals, and target audience</p>
-              </div>
-              <div className="process-step">
-                <div className="step-number">02</div>
-                <h3>Strategy</h3>
-                <p>Creating a roadmap aligned with your objectives</p>
-              </div>
-              <div className="process-step">
-                <div className="step-number">03</div>
-                <h3>Design</h3>
-                <p>Crafting beautiful, conversion-focused interfaces</p>
-              </div>
-              <div className="process-step">
-                <div className="step-number">04</div>
-                <h3>Development</h3>
-                <p>Building with clean, scalable, performant code</p>
-              </div>
-              <div className="process-step">
-                <div className="step-number">05</div>
-                <h3>Testing</h3>
-                <p>Ensuring quality across all devices and browsers</p>
-              </div>
-              <div className="process-step">
-                <div className="step-number">06</div>
-                <h3>Launch</h3>
-                <p>Deploying and monitoring for optimal performance</p>
-              </div>
+              {process.map((p, i) => (
+                <div key={i} className="process-card glass-card">
+                  <span className="process-step-num mono">{p.step}</span>
+                  <h4>{p.title}</h4>
+                  <p>{p.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="cta-banner">
+        <section className="section services-cta">
           <div className="container">
-            <div className="cta-content">
-              <h2>Ready to Elevate Your Digital Presence?</h2>
-              <p>Let's discuss how we can help your business grow</p>
-              <Link to="/contact" className="btn btn-primary">
-                Get Started Today
-              </Link>
+            <div className="cta-banner-industrial">
+              <h2>Launch your project</h2>
+              <p>Discuss your technical requirements with our engineering team.</p>
+              <Link to="/contact" className="btn btn-primary">Start the conversation <ArrowRight size={16} /></Link>
             </div>
           </div>
         </section>

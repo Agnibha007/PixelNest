@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 Disallow: /static/
 
-Sitemap: https://pixelnest.example.com/sitemap.xml
+Sitemap: https://pixelneststudios.tech/sitemap.xml

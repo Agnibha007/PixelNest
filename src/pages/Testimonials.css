@@ -1,69 +1,171 @@
-.testimonials-grid-full {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2.5rem;
+.testimonials-page {
+  padding-top: var(--sp-24);
 }
 
-.testimonial-card-full {
-  padding: 2.5rem;
+.testimonials-hero {
+  padding: var(--sp-12) 0;
+  text-align: center;
+}
+
+@media (min-width: 968px) {
+  .testimonials-hero { text-align: left; }
+}
+
+.full-case-studies-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 }
 
-.testimonial-text-full {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: var(--text-secondary);
-  font-style: italic;
-  flex-grow: 1;
-}
-
-.testimonial-author-full {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.author-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary-blue), var(--purple));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 1.25rem;
-  flex-shrink: 0;
-}
-
-.author-info {
+.case-study-row {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 20px;
+  padding: 48px 0;
+  border-top: 1px solid var(--border-main);
 }
 
-.author-info strong {
-  color: var(--text-primary);
-  font-size: 1.125rem;
-}
-
-.author-info span {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-}
-
-.author-info .company {
-  color: var(--primary-blue);
-  font-weight: 500;
-}
-
-@media (max-width: 768px) {
-  .testimonials-grid-full {
-    grid-template-columns: 1fr;
+@media (min-width: 968px) {
+  .case-study-row {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--sp-12);
+    padding: var(--sp-16) 0;
+    align-items: flex-start;
   }
+}
+
+.case-study-row:last-child {
+  border-bottom: 1px solid var(--border-main);
+}
+
+.case-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.lab-icon-box {
+  color: var(--brand-primary);
+  margin-bottom: 12px;
+}
+
+.case-meta h3 {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+
+@media (min-width: 968px) {
+  .case-meta h3 { font-size: 1.75rem; margin: var(--sp-2) 0; }
+}
+
+.case-meta .label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  color: var(--brand-primary);
+  margin-top: 12px;
+  background: rgba(245, 164, 0, 0.05);
+  padding: 4px 10px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.status-indicator .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--brand-primary);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.lab-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-bottom: 24px;
+}
+
+@media (min-width: 968px) {
+  .lab-description { font-size: 1.25rem; margin-bottom: var(--sp-12); }
+}
+
+.lab-technical-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .lab-technical-details { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 968px) {
+  .lab-technical-details { gap: var(--sp-12); }
+}
+
+.detail-item .label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  letter-spacing: 0.1em;
+}
+
+.detail-item p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+/* Engineering Standard Grid */
+.engineering-focus .faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+@media (min-width: 768px) {
+  .engineering-focus .faq-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  .engineering-focus .faq-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-12);
+    margin-top: var(--sp-8);
+  }
+}
+
+.faq-item .label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  display: block;
+  margin-bottom: 12px;
+  letter-spacing: 0.1em;
+}
+
+.standard-icon {
+  margin-bottom: 12px;
+}
+
+.faq-item h4 {
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+}
+
+.faq-item p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.6;
 }

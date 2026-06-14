@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
+import { 
+  Rocket, 
+  Layers, 
+  Cpu, 
+  Activity,
+  ArrowRight,
+  FlaskConical,
+  Smartphone,
+  Gauge
+} from "lucide-react";
 import "./Home.css";
 
 const Home = () => {
+  const [showStickyCTA, setShowStickyCTA] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowStickyCTA(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -11,260 +31,212 @@ const Home = () => {
       "@type": "Organization",
       name: "PixelNest",
       url: "https://pixelneststudios.tech",
-      logo: "https://pixelneststudios.tech/pixelnest.png",
-      description: "Premium web development and digital solutions",
-      offers: {
-        "@type": "AggregateOffer",
-        offerCount: "6",
-        itemOffered: [
-          {
-            "@type": "Service",
-            name: "Website Design & Development",
-            description: "Custom, high-performance websites",
-          },
-          {
-            "@type": "Service",
-            name: "React Web Applications",
-            description: "Scalable, interactive web apps",
-          },
-          {
-            "@type": "Service",
-            name: "UI/UX Design",
-            description: "Intuitive interfaces that convert visitors",
-          },
-          {
-            "@type": "Service",
-            name: "Performance Optimization",
-            description: "Lightning-fast load times",
-          },
-        ],
-      },
+      description: "Premium digital product studio focused on engineering excellence.",
     },
   };
-  const services = [
+
+  const capabilities = [
     {
-      title: "Website Design & Development",
-      description:
-        "Custom, high-performance websites built with modern technologies",
-      icon: "🎨",
+      id: "01",
+      title: "Product Strategy",
+      description: "Defining technical and business roadmaps to ensure your product survives and scales.",
+      icon: <Rocket size={20} strokeWidth={1.5} color="var(--brand-primary)" />
     },
     {
-      title: "React Web Applications",
-      description:
-        "Scalable, interactive web apps that deliver exceptional user experiences",
-      icon: "⚛️",
+      id: "02",
+      title: "Interface Design",
+      description: "Precise, conversion-led UI systems that balance industrial discipline with high-end aesthetics.",
+      icon: <Layers size={20} strokeWidth={1.5} color="var(--brand-primary)" />
     },
     {
-      title: "UI/UX Design",
-      description: "Intuitive interfaces that convert visitors into customers",
-      icon: "✨",
+      id: "03",
+      title: "Full Stack Development",
+      description: "Production-grade codebases built with React and modern architectures, optimized for speed.",
+      icon: <Cpu size={20} strokeWidth={1.5} color="var(--brand-primary)" />
     },
     {
-      title: "Performance Optimization",
-      description:
-        "Lightning-fast load times that improve rankings and conversions",
-      icon: "⚡",
+      id: "04",
+      title: "Performance Engineering",
+      description: "Technical audits and core web vital enhancements that turn sluggish platforms into velocity assets.",
+      icon: <Activity size={20} strokeWidth={1.5} color="var(--brand-primary)" />
     },
   ];
 
-  const whyChoose = [
+  const labPreviews = [
     {
-      title: "Modern Technology Stack",
-      description: "Built with cutting-edge tools for maximum performance",
+      id: "LAB_01",
+      name: "Nexus UI",
+      description: "An internal design system experiment focused on extreme accessibility and performance.",
+      tech: "React + Tailwind",
+      icon: <Layers size={24} strokeWidth={1.5} />
     },
     {
-      title: "SEO-Ready Architecture",
-      description: "Optimized for search engines from day one",
-    },
-    {
-      title: "Mobile-First Design",
-      description: "Perfect experience on every device",
-    },
-    {
-      title: "Conversion Focused",
-      description: "Every element designed to drive results",
+      id: "LAB_02",
+      name: "Vault Auth",
+      description: "A secure, passwordless authentication protocol developed for our internal tools.",
+      tech: "NextAuth + WebAuthn",
+      icon: <Cpu size={24} strokeWidth={1.5} />
     },
   ];
 
-  const testimonials = [
-    {
-      name: "Dr. Priya Sharma",
-      role: "Clinic Owner",
-      text: "PixelNest transformed our outdated website into a modern platform that significantly increased patient enquiries.",
-      rating: 5,
-    },
-    {
-      name: "Rajesh Kumar",
-      role: "Startup Founder",
-      text: "The design quality and performance optimisation exceeded expectations. Highly professional team.",
-      rating: 5,
-    },
+  const principles = [
+    { label: "Performance", value: "98+", icon: <Gauge size={20} /> },
+    { label: "Accessibility", value: "100", icon: <Smartphone size={20} /> },
+    { label: "Architecture", value: "Clean", icon: <Cpu size={20} /> },
+    { label: "Execution", value: "Fixed", icon: <Rocket size={20} /> },
   ];
 
   return (
     <>
       <SEO
-        title="PixelNest - Premium Web Development & Digital Solutions"
-        description="Transform your business with premium web development services. Custom websites, React applications, UI/UX design, and SEO optimization. Get a free consultation today."
-        keywords="web development, react development, UI/UX design, website design, SEO optimization, digital solutions, custom websites, performance optimization"
+        title="PixelNest - Premium Digital Design & Engineering Studio"
+        description="We design and engineer high-performance digital products. Focused on technical excellence and industrial precision."
         url="https://pixelneststudios.tech/"
         structuredData={structuredData}
       />
-      <div className="home">
-        <section className="hero">
-          <div className="hero-bg"></div>
+      
+      <div className="home-page">
+        {/* Hero Section */}
+        <section className="hero-section">
           <div className="container hero-container">
-            <div className="hero-content fade-in-up">
-              <h1 className="hero-title">
-                Building Digital Experiences
-                <br />
-                <span className="gradient-text">That Grow Businesses</span>
+            <div className="hero-content">
+              <span className="label-badge fade-in-up">AVAILABLE_FOR_Q4_2026</span>
+              <h1 className="hero-title fade-in-up delay-1">
+                Engineering <br />
+                <span className="gradient-text">digital experiences</span> <br />
+                that scale.
               </h1>
-              <p className="hero-subtitle">
-                Premium web development and digital solutions that drive
-                measurable growth, establish credibility, and create powerful
-                online presence.
+              <p className="hero-subtitle fade-in-up delay-2">
+                PixelNest partners with ambitious brands to design, develop, and scale high-performing digital products with industrial precision.
               </p>
-              <div className="hero-cta">
+              <div className="hero-cta fade-in-up delay-3">
                 <Link to="/contact" className="btn btn-primary">
-                  Get Started
+                  Start a Project <ArrowRight size={18} />
                 </Link>
-                <Link to="/services" className="btn btn-secondary">
-                  Our Services
+                <Link to="/testimonials" className="btn btn-secondary hide-mobile">
+                  Explore the Lab <FlaskConical size={18} />
                 </Link>
               </div>
             </div>
-            <div className="hero-visual floating">
-              <div className="visual-circle circle-1"></div>
-              <div className="visual-circle circle-2"></div>
-              <div className="visual-circle circle-3"></div>
-            </div>
-          </div>
-        </section>
 
-        <section className="section services-preview">
-          <div className="container">
-            <h2 className="section-title">Our Services</h2>
-            <p className="section-subtitle">
-              Comprehensive digital solutions tailored to your business goals
-            </p>
-            <div className="services-grid">
-              {services.map((service, index) => (
-                <div key={index} className="glass-card service-card">
-                  <div className="service-icon">{service.icon}</div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
+            {/* Reverted Premium Project Showcase */}
+            <div className="hero-showcase fade-in-up delay-3">
+              <div className="showcase-frame">
+                <div className="showcase-header">
+                  <div className="showcase-dots"><span></span><span></span><span></span></div>
+                  <div className="showcase-tab mono">internal_experiment_08.px</div>
                 </div>
-              ))}
-            </div>
-            <div className="text-center" style={{ marginTop: "3rem" }}>
-              <Link to="/services" className="btn btn-primary">
-                View All Services
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="section why-choose">
-          <div className="container">
-            <h2 className="section-title">Why Choose PixelNest</h2>
-            <p className="section-subtitle">
-              We combine innovation, expertise, and results-driven strategies
-            </p>
-            <div className="why-grid">
-              {whyChoose.map((item, index) => (
-                <div key={index} className="why-card">
-                  <div className="why-number">
-                    {String(index + 1).padStart(2, "0")}
+                <div className="showcase-body">
+                  <div className="showcase-ui-elements">
+                    <div className="ui-card-mini">
+                      <span className="mono">CORE_VITALS</span>
+                      <div className="val">99/100</div>
+                      <div className="bar"><div className="fill" style={{width: '99%'}}></div></div>
+                    </div>
+                    <div className="ui-card-mini accent">
+                      <span className="mono">SYSTEM_LOAD</span>
+                      <div className="val">Optimal</div>
+                      <div className="card-circles"><span></span><span></span><span></span></div>
+                    </div>
                   </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section testimonials-preview">
-          <div className="container">
-            <h2 className="section-title">Client Success Stories</h2>
-            <p className="section-subtitle">
-              Real results from businesses we've helped transform
-            </p>
-            <div className="testimonials-grid">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="glass-card testimonial-card">
-                  <div className="stars">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <span key={i}>⭐</span>
-                    ))}
+                  <div className="showcase-mockup-content">
+                    <div className="mock-nav"></div>
+                    <div className="mock-hero">
+                      <div className="mock-line-lg"></div>
+                      <div className="mock-line-md"></div>
+                    </div>
+                    <div className="mock-grid">
+                      <div className="mock-box"></div>
+                      <div className="mock-box"></div>
+                      <div className="mock-box"></div>
+                    </div>
                   </div>
-                  <p className="testimonial-text">"{testimonial.text}"</p>
-                  <div className="testimonial-author">
-                    <strong>{testimonial.name}</strong>
-                    <span>{testimonial.role}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="text-center" style={{ marginTop: "3rem" }}>
-              <Link to="/testimonials" className="btn btn-secondary">
-                Read More Reviews
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="section founder-credibility">
-          <div className="container">
-            <h2 className="section-title">Leadership</h2>
-            <p className="section-subtitle">
-              Driven by innovation and commitment to excellence
-            </p>
-            <div className="founders-grid">
-              <div className="glass-card founder-card">
-                <div className="founder-image">AM</div>
-                <h3>Agnibha Mukherjee</h3>
-                <p className="founder-role">Co-Founder</p>
-                <p className="founder-bio">
-                  Visionary technologist with a passion for building digital
-                  solutions that create real business impact.
-                </p>
-                <div className="expertise-tags">
-                  <span>Full-Stack Development</span>
-                  <span>System Architecture</span>
-                  <span>React Development</span>
-                </div>
-              </div>
-              <div className="glass-card founder-card">
-                <div className="founder-image">AS</div>
-                <h3>Aarush Singh</h3>
-                <p className="founder-role">Founder</p>
-                <p className="founder-bio">
-                  Strategic leader focused on business growth and building
-                  strong client relationships.
-                </p>
-                <div className="expertise-tags">
-                  <span>Business Development</span>
-                  <span>Client Relations</span>
-                  <span>Product Strategy</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="cta-banner">
+        {/* Engineering Principles Section */}
+        <section className="metrics-section">
           <div className="container">
-            <div className="cta-content">
-              <h2>Ready to Transform Your Digital Presence?</h2>
-              <p>Let's build something exceptional together</p>
-              <Link to="/contact" className="btn btn-primary">
-                Start Your Project
-              </Link>
+            <div className="metrics-grid">
+              {principles.map((p, i) => (
+                <div key={i} className="metric-card glass-card fade-in-up">
+                  <div className="metric-icon">{p.icon}</div>
+                  <span className="metric-value">{p.value}</span>
+                  <span className="metric-label">{p.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
+
+        {/* Capabilities Section */}
+        <section className="section capabilities-section">
+          <div className="container">
+            <div className="section-header">
+              <span className="label-badge">Expertise</span>
+              <h2 className="section-title">Capabilities</h2>
+            </div>
+            <div className="capabilities-grid">
+              {capabilities.map((cap, index) => (
+                <div key={index} className="capability-item border-top">
+                  <div className="cap-icon-box">{cap.icon}</div>
+                  <div className="cap-content">
+                    <h3>{cap.title}</h3>
+                    <p>{cap.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Lab Preview */}
+        <section className="section lab-preview-section">
+          <div className="container">
+            <div className="section-header">
+              <span className="label-badge">R&D</span>
+              <h2 className="section-title">The Lab</h2>
+            </div>
+            <div className="lab-grid">
+              {labPreviews.map((lab, i) => (
+                <div key={i} className="glass-card lab-preview-card">
+                  <div className="lab-icon-box">{lab.icon}</div>
+                  <h3>{lab.name}</h3>
+                  <p style={{marginBottom: 'var(--sp-4)'}}>{lab.description}</p>
+                  <span className="mono label-badge">{lab.tech}</span>
+                </div>
+              ))}
+            </div>
+            <div className="text-center" style={{marginTop: 'var(--sp-12)'}}>
+              <Link to="/testimonials" className="btn btn-secondary">Enter the Repository <FlaskConical size={16} /></Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="section final-cta-section">
+          <div className="container">
+            <div className="cta-premium-box glass-card">
+              <h2>Build your next platform.</h2>
+              <p>Discuss your technical requirements with our engineering team.</p>
+              <div className="cta-actions">
+                <Link to="/contact" className="btn btn-primary">Start the conversation <ArrowRight size={16} /></Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Sticky Mobile CTA */}
+        <div className={`sticky-mobile-cta ${showStickyCTA ? 'visible' : ''}`}>
+          <div className="container">
+            <Link to="/contact" className="btn btn-primary btn-full">
+              Start Project <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );

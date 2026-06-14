@@ -2,12 +2,12 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 
 const SEO = ({
-  title = "PixelNest - Premium Web Development & Digital Solutions",
-  description = "PixelNest builds high-performance websites and React applications that drive business growth. Expert web development, UI/UX design, and SEO optimization services.",
+  title = "PixelNest",
+  description = "Professional digital product design and engineering studio.",
   keywords = "web development, react development, UI/UX design, website design, SEO optimization, digital solutions",
   author = "PixelNest",
   url = "https://pixelneststudios.tech",
-  image = "https://pixelneststudios.tech/og-image.png",
+  image = "https://pixelneststudios.tech/pixelnest.png",
   type = "website",
   structuredData = null,
 }) => {

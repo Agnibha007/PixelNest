@@ -1,139 +1,191 @@
 .App {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: smoothFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  /* Extremely Subtle Film Grain & Glow */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 50% 0%, rgba(245, 164, 0, 0.04) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Optimization for mobile: remove expensive filters if needed */
+@media (max-width: 768px) {
+  .App {
+    background-image: radial-gradient(circle at 50% 0%, rgba(245, 164, 0, 0.04) 0%, transparent 60%);
+    background-attachment: scroll; /* Smoother on mobile browsers */
+  }
+}
+
+@keyframes smoothFadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.main-content {
+  flex-grow: 1;
   position: relative;
+  z-index: 1;
 }
 
 .container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--sp-mobile-container); /* 20px for mobile-first */
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--sp-12);
+  }
 }
 
 .section {
-  padding: 6rem 0;
-  position: relative;
+  padding: var(--sp-mobile-section) 0; /* 64-80px for mobile */
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: var(--sp-32) 0;
+  }
+}
+
+/* Premium Focus States */
+:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 4px;
 }
 
 .section-title {
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: clamp(2rem, 8vw, 4rem); /* Responsive title size */
+  font-weight: 700;
+  margin-bottom: var(--sp-4);
+  letter-spacing: -0.04em;
+  color: var(--text-main);
   text-align: center;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--primary-blue), var(--purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  line-height: 1.1;
 }
 
 .section-subtitle {
+  color: var(--text-muted);
+  font-size: clamp(1rem, 4vw, 1.125rem);
+  margin-bottom: var(--sp-12);
+  max-width: 700px;
+  line-height: 1.5;
   text-align: center;
-  color: var(--text-secondary);
-  font-size: 1.125rem;
-  margin-bottom: 4rem;
-  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
+/* Precise Button System */
 .btn {
-  padding: 1rem 2.5rem;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target); /* 44px */
+  padding: 0.75rem 2rem;
   font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  transition: all 0.3s ease;
   text-decoration: none;
-  display: inline-block;
-  font-family: 'Inter', sans-serif;
+  font-family: inherit;
+  gap: var(--sp-2);
+  border-radius: 6px;
+  letter-spacing: -0.01em;
+  position: relative;
+  overflow: hidden;
+  width: 100%; /* Mobile first: full width */
+}
+
+@media (min-width: 480px) {
+  .btn {
+    width: auto;
+  }
+}
+
+/* Tap Feedback */
+.btn:active {
+  transform: scale(0.98) translateY(1px) !important;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-blue), var(--purple));
-  color: white;
-  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+  background-color: var(--brand-primary);
+  color: var(--text-invert);
+  border: 1px solid var(--brand-primary);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 40px rgba(0, 102, 255, 0.4);
+  background-color: var(--brand-secondary);
+  border-color: var(--brand-secondary);
 }
 
 .btn-secondary {
-  background: transparent;
-  color: var(--text-primary);
-  border: 2px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-main);
 }
 
 .btn-secondary:hover {
-  border-color: var(--primary-blue);
-  color: var(--primary-blue);
-  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Premium Industrial Cards */
 .glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.3s ease;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-main);
+  padding: var(--sp-8);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
 }
 
-.glass-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 60px rgba(0, 102, 255, 0.2);
-}
-
+/* Typography Utilities */
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary-blue), var(--purple));
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--brand-primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.text-center {
-  text-align: center;
-}
+.text-center { text-align: center; }
 
-@media (max-width: 768px) {
-  .section {
-    padding: 4rem 0;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .container {
-    padding: 0 1rem;
-  }
-}
-
+/* Animations - Optimized for Mobile */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 .fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
+  opacity: 0;
+  animation: fadeInUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  will-change: transform, opacity;
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-.floating {
-  animation: float 3s ease-in-out infinite;
+/* Numeric Badge / Metadata Label */
+.label-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--brand-primary);
+  text-transform: uppercase;
+  margin-bottom: var(--sp-4);
+  display: inline-block;
+  background: rgba(245, 164, 0, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
 }

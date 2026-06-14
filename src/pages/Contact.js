@@ -1,160 +1,309 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SEO from "../components/SEO";
+import { sanitizeString, validateEmail } from "../utils/security";
+import { 
+  Monitor, 
+  BrainCircuit, 
+  MessageCircle, 
+  PhoneCall, 
+  CloudCog, 
+  Blocks,
+  ArrowRight,
+  ArrowLeft,
+  CheckCircle2
+} from "lucide-react";
 import "./Contact.css";
 
+const services = [
+  {
+    id: "web",
+    title: "Website Design & Development",
+    desc: "Redesign, performance, and new builds.",
+    options: ["New Website", "Redesign", "Landing Page", "Performance Optimization"],
+    icon: <Monitor size={24} strokeWidth={1.5} />
+  },
+  {
+    id: "ai",
+    title: "AI Automation",
+    desc: "Workflow automation and business AI.",
+    options: ["AI Assistants", "Workflow Automation", "Business AI Integrations"],
+    icon: <BrainCircuit size={24} strokeWidth={1.5} />
+  },
+  {
+    id: "whatsapp",
+    title: "WhatsApp Automation",
+    desc: "Chatbots and lead capture systems.",
+    options: ["Chatbots", "Customer Support Bots", "Lead Capture Systems"],
+    icon: <MessageCircle size={24} strokeWidth={1.5} />
+  },
+  {
+    id: "voice",
+    title: "Voice AI Systems",
+    desc: "Calling bots and appointment agents.",
+    options: ["Calling Bots", "Appointment Agents", "Customer Communication"],
+    icon: <PhoneCall size={24} strokeWidth={1.5} />
+  },
+  {
+    id: "infra",
+    title: "Business Infrastructure",
+    desc: "Email setup and cloud configuration.",
+    options: ["Professional Email Setup", "Domains & Analytics", "Cloud Configuration"],
+    icon: <CloudCog size={24} strokeWidth={1.5} />
+  },
+  {
+    id: "custom",
+    title: "Custom Solution",
+    desc: "Unique technical requirements.",
+    options: ["Unique Technical Requirement"],
+    icon: <Blocks size={24} strokeWidth={1.5} />
+  }
+];
+
 const Contact = () => {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    name: "Contact PixelNest",
-    description:
-      "Get in touch with PixelNest for web development services and digital solutions.",
-    mainEntity: {
-      "@type": "Organization",
-      name: "PixelNest",
-      email: "contact@pixelnest.com",
-      telephone: "+91-98765-43210",
-      address: {
-        "@type": "PostalAddress",
-        addressCountry: "IN",
-      },
-    },
-  };
+  const [step, setStep] = useState(1);
+  const [selectedService, setSelectedService] = useState(null);
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+    company: "",
+    timeline: "Standard (1-2 months)",
     message: "",
   });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  // Auto scroll to top on step change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [step]);
+
+  const toggleOption = (option) => {
+    setSelectedOptions(prev => 
+      prev.includes(option) ? prev.filter(o => o !== option) : [...prev, option]
+    );
+  };
+
+  const handleNext = () => {
+    if (step === 1 && !selectedService) {
+      setError("Select a primary service to continue.");
+      return;
+    }
+    setError("");
+    setStep(prev => prev + 1);
+  };
+
+  const handleBack = () => {
+    setError("");
+    setStep(prev => prev - 1);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you! We will get back to you soon.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    if (isSubmitting) return;
+
+    if (!validateEmail(formData.email)) {
+      setError("Enter a valid work email.");
+      return;
+    }
+
+    setError("");
+    setIsSubmitting(true);
+
+    const submissionData = {
+      service: selectedService.title,
+      requirements: selectedOptions,
+      details: {
+        name: sanitizeString(formData.name),
+        email: formData.email,
+        company: sanitizeString(formData.company),
+        timeline: formData.timeline,
+        message: sanitizeString(formData.message)
+      }
+    };
+
+    try {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      console.log("Configurator Submission:", submissionData);
+      setSuccess(true);
+    } catch (err) {
+      setError("Connection error. Try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  return (
-    <>
-      <SEO
-        title="Contact Us - Get Your Free Consultation | PixelNest Web Development"
-        description="Ready to transform your digital presence? Contact PixelNest for a free consultation. Fast response, no obligation quotes. Let's build something exceptional together."
-        keywords="contact PixelNest, web development consultation, free quote, get in touch, hire web developer"
-        url="https://pixelneststudios.tech/contact"
-        structuredData={structuredData}
-      />
+  if (success) {
+    return (
       <div className="contact-page">
-        <section className="page-hero">
-          <div className="container">
-            <h1 className="page-title fade-in-up">Get In Touch</h1>
-            <p className="page-subtitle fade-in-up">
-              Let's discuss how we can help your business grow
-            </p>
-          </div>
-        </section>
-
-        <section className="section contact-section">
-          <div className="container">
-            <div className="contact-grid">
-              <div className="contact-info">
-                <h2>Start Your Project</h2>
-                <p>
-                  Ready to transform your digital presence? Fill out the form
-                  and we'll get back to you within 24 hours.
-                </p>
-
-                <div className="contact-methods">
-                  <div className="contact-method">
-                    <div className="method-icon">📧</div>
-                    <div>
-                      <h3>Email</h3>
-                      <p>contact@pixelnest.com</p>
-                    </div>
-                  </div>
-                  <div className="contact-method">
-                    <div className="method-icon">📞</div>
-                    <div>
-                      <h3>Phone</h3>
-                      <p>+91 98765 43210</p>
-                    </div>
-                  </div>
-                  <div className="contact-method">
-                    <div className="method-icon">📍</div>
-                    <div>
-                      <h3>Location</h3>
-                      <p>Remote & On-site Available</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="trust-badges">
-                  <div className="badge">✓ Fast Response</div>
-                  <div className="badge">✓ Free Consultation</div>
-                  <div className="badge">✓ No Obligation Quote</div>
-                </div>
-              </div>
-
-              <div className="glass-card contact-form-card">
-                <form onSubmit={handleSubmit} className="contact-form">
-                  <div className="form-group">
-                    <label htmlFor="name">Full Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email Address</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone Number</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+91 98765 43210"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="message">Project Details</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows="5"
-                      placeholder="Tell us about your project..."
-                    ></textarea>
-                  </div>
-                  <button type="submit" className="btn btn-primary btn-full">
-                    Send Message
-                  </button>
-                </form>
-              </div>
+        <section className="section">
+          <div className="container text-center">
+            <div className="glass-card success-card">
+              <CheckCircle2 size={48} strokeWidth={1.5} color="var(--brand-primary)" style={{marginBottom: 'var(--sp-4)'}} />
+              <h2 className="section-title">Configuration Sent.</h2>
+              <p className="section-subtitle">We've received your brief. A specialist will review your requirements and reach out via email within 24 hours.</p>
+              <button onClick={() => window.location.reload()} className="btn btn-secondary">Create New brief</button>
             </div>
           </div>
         </section>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <SEO title="Configurator - PixelNest" description="Configure your digital product requirements." />
+      
+      <div className="contact-page">
+        <section className="contact-hero mobile-only-hero">
+          <div className="container">
+            <div className="configurator-progress">
+              <span className="mono">0{step} / 03</span>
+              <div className="progress-bar-mobile">
+                <div className="progress-fill" style={{ width: `${(step / 3) * 100}%` }}></div>
+              </div>
+            </div>
+            <h1 className="page-title">Configurator.</h1>
+          </div>
+        </section>
+
+        <section className="section configurator-section">
+          <div className="container">
+            <div className="configurator-container">
+              {error && <div className="config-error mono">{error}</div>}
+
+              {step === 1 && (
+                <div className="config-step-mobile fade-in">
+                  <h2 className="mobile-step-title">What do you need built?</h2>
+                  <div className="service-list-mobile">
+                    {services.map(s => (
+                      <button 
+                        key={s.id} 
+                        className={`service-item-mobile ${selectedService?.id === s.id ? 'selected' : ''}`}
+                        onClick={() => setSelectedService(s)}
+                      >
+                        <div className="item-icon">{s.icon}</div>
+                        <div className="item-text">
+                          <h3>{s.title}</h3>
+                          <p>{s.desc}</p>
+                        </div>
+                        <div className="item-arrow">
+                          <ArrowRight size={18} />
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {step === 2 && (
+                <div className="config-step-mobile fade-in">
+                  <h2 className="mobile-step-title">Select requirements</h2>
+                  <p className="mobile-step-desc">Options for {selectedService.title}</p>
+                  <div className="options-list-mobile">
+                    {selectedService.options.map(opt => (
+                      <button 
+                        key={opt} 
+                        className={`option-item-mobile ${selectedOptions.includes(opt) ? 'selected' : ''}`}
+                        onClick={() => toggleOption(opt)}
+                      >
+                        <div className="radio-circle">
+                          {selectedOptions.includes(opt) && <div className="inner-dot"></div>}
+                        </div>
+                        <span>{opt}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {step === 3 && (
+                <div className="config-step-mobile fade-in">
+                  <h2 className="mobile-step-title">Final Details</h2>
+                  <form onSubmit={handleSubmit} className="mobile-industrial-form">
+                    <div className="mobile-form-group">
+                      <label className="mono">IDENTIFIER</label>
+                      <input 
+                        type="text" 
+                        required 
+                        placeholder="John Doe" 
+                        autoComplete="name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      />
+                    </div>
+                    <div className="mobile-form-group">
+                      <label className="mono">WORK EMAIL</label>
+                      <input 
+                        type="email" 
+                        required 
+                        placeholder="john@company.com" 
+                        autoComplete="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      />
+                    </div>
+                    <div className="mobile-form-group">
+                      <label className="mono">COMPANY</label>
+                      <input 
+                        type="text" 
+                        placeholder="Organization" 
+                        autoComplete="organization"
+                        value={formData.company}
+                        onChange={(e) => setFormData({...formData, company: e.target.value})}
+                      />
+                    </div>
+                    <div className="mobile-form-group">
+                      <label className="mono">TIMELINE</label>
+                      <select 
+                        value={formData.timeline}
+                        onChange={(e) => setFormData({...formData, timeline: e.target.value})}
+                      >
+                        <option>Urgent (&lt; 2 weeks)</option>
+                        <option>Standard (1-2 months)</option>
+                        <option>Planning phase</option>
+                      </select>
+                    </div>
+                    <div className="mobile-form-group">
+                      <label className="mono">MISSION BRIEF</label>
+                      <textarea 
+                        rows="4" 
+                        placeholder="Project vision..."
+                        value={formData.message}
+                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      ></textarea>
+                    </div>
+                    {/* Padding for sticky bottom button */}
+                    <div style={{ height: '80px' }}></div>
+                  </form>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* Sticky Bottom Actions for Configurator */}
+        {!success && (
+          <div className="configurator-sticky-footer">
+            <div className="container footer-actions-row">
+              {step > 1 && (
+                <button onClick={handleBack} className="btn btn-secondary btn-icon-only" disabled={isSubmitting}>
+                  <ArrowLeft size={20} />
+                </button>
+              )}
+              {step < 3 ? (
+                <button onClick={handleNext} className="btn btn-primary btn-grow">
+                  Continue <ArrowRight size={20} />
+                </button>
+              ) : (
+                <button onClick={handleSubmit} className="btn btn-primary btn-grow" disabled={isSubmitting}>
+                  {isSubmitting ? 'Transmitting...' : <>Transmit brief <ArrowRight size={20} /></>}
+                </button>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
