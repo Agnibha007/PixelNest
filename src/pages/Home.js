@@ -9,7 +9,8 @@ import {
   ArrowRight,
   FlaskConical,
   Smartphone,
-  Gauge
+  Gauge,
+  ShieldCheck
 } from "lucide-react";
 import "./Home.css";
 
@@ -65,10 +66,10 @@ const Home = () => {
   const labPreviews = [
     {
       id: "LAB_01",
-      name: "Nexus UI",
-      description: "An internal design system experiment focused on extreme accessibility and performance.",
-      tech: "React + Tailwind",
-      icon: <Layers size={28} strokeWidth={1.5} />
+      name: "Uncrackable",
+      description: "A web-based cybersecurity learning platform with progressive security challenges.",
+      tech: "Next.js + MongoDB",
+      icon: <ShieldCheck size={28} strokeWidth={1.5} />
     },
     {
       id: "LAB_02",

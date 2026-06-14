@@ -1,7 +1,6 @@
 import React from "react";
 import SEO from "../components/SEO";
 import { 
-  Layers, 
   ShieldCheck, 
   Zap,
   Activity,
@@ -14,13 +13,13 @@ const Testimonials = () => {
   const labProjects = [
     {
       id: "LAB_01",
-      name: "Nexus UI",
-      type: "Design System / Component Library",
-      description: "An internal exploration into high-performance, accessible UI components. Built to handle complex state transitions with zero layout shift.",
-      objective: "To create a foundation for all PixelNest products that guarantees 100/100 accessibility and performance scores.",
-      stack: "React, Tailwind, Framer Motion, Radix UI",
-      status: "STABLE",
-      icon: <Layers size={24} strokeWidth={1.5} />
+      name: "Uncrackable",
+      type: "AI-Powered Security Challenge Platform",
+      description: "A web-based cybersecurity learning platform where users solve progressively harder security challenges, track progress, and improve problem-solving skills.",
+      objective: "Building complete platforms from idea → design → deployment.",
+      stack: "Next.js, MongoDB, Authentication, Tailwind, API Architecture",
+      status: "LIVE",
+      icon: <ShieldCheck size={24} strokeWidth={1.5} />
     },
     {
       id: "LAB_02",
