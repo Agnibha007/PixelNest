@@ -39,7 +39,7 @@ const Navbar = ({ theme, toggleTheme }) => {
   const navLinks = [
     { path: "/services", label: "Capabilities" },
     { path: "/about", label: "Process" },
-    { path: "/testimonials", label: "Lab" },
+    { path: "/labs", label: "Lab" },
     { path: "/contact", label: "Contact" },
   ];
 

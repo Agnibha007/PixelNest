@@ -114,7 +114,7 @@ const Home = () => {
                 <Link to="/contact" className="btn btn-primary">
                   Start a Project <ArrowRight size={18} />
                 </Link>
-                <Link to="/testimonials" className="btn btn-secondary hide-mobile">
+                <Link to="/labs" className="btn btn-secondary hide-mobile">
                   Explore the Lab <FlaskConical size={18} />
                 </Link>
               </div>

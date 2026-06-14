@@ -48,7 +48,7 @@ const Testimonials = () => {
       <SEO
         title="Lab - PixelNest Engineering Repository"
         description="Explore the technical experiments, internal products, and engineering deep-dives from the PixelNest team."
-        url="https://pixelneststudios.tech/testimonials"
+        url="https://pixelneststudios.tech/labs"
       />
       
       <div className="testimonials-page">

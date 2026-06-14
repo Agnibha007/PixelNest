@@ -28,7 +28,7 @@ const Footer = () => {
             <span className="mono label">STUDIO</span>
             <Link to="/services">Capabilities</Link>
             <Link to="/about">Process</Link>
-            <Link to="/testimonials">Lab</Link>
+            <Link to="/labs">Lab</Link>
           </div>
           <div className="footer-col">
             <span className="mono label">CONNECT</span>
