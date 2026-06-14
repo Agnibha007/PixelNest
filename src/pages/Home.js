@@ -40,25 +40,25 @@ const Home = () => {
       id: "01",
       title: "Product Strategy",
       description: "Defining technical and business roadmaps to ensure your product survives and scales.",
-      icon: <Rocket size={20} strokeWidth={1.5} color="var(--brand-primary)" />
+      icon: <Rocket size={24} strokeWidth={1.5} color="var(--brand-primary)" />
     },
     {
       id: "02",
       title: "Interface Design",
       description: "Precise, conversion-led UI systems that balance industrial discipline with high-end aesthetics.",
-      icon: <Layers size={20} strokeWidth={1.5} color="var(--brand-primary)" />
+      icon: <Layers size={24} strokeWidth={1.5} color="var(--brand-primary)" />
     },
     {
       id: "03",
       title: "Full Stack Development",
       description: "Production-grade codebases built with React and modern architectures, optimized for speed.",
-      icon: <Cpu size={20} strokeWidth={1.5} color="var(--brand-primary)" />
+      icon: <Cpu size={24} strokeWidth={1.5} color="var(--brand-primary)" />
     },
     {
       id: "04",
       title: "Performance Engineering",
       description: "Technical audits and core web vital enhancements that turn sluggish platforms into velocity assets.",
-      icon: <Activity size={20} strokeWidth={1.5} color="var(--brand-primary)" />
+      icon: <Activity size={24} strokeWidth={1.5} color="var(--brand-primary)" />
     },
   ];
 
@@ -68,22 +68,22 @@ const Home = () => {
       name: "Nexus UI",
       description: "An internal design system experiment focused on extreme accessibility and performance.",
       tech: "React + Tailwind",
-      icon: <Layers size={24} strokeWidth={1.5} />
+      icon: <Layers size={28} strokeWidth={1.5} />
     },
     {
       id: "LAB_02",
       name: "Vault Auth",
       description: "A secure, passwordless authentication protocol developed for our internal tools.",
       tech: "NextAuth + WebAuthn",
-      icon: <Cpu size={24} strokeWidth={1.5} />
+      icon: <Cpu size={28} strokeWidth={1.5} />
     },
   ];
 
   const principles = [
-    { label: "Performance", value: "98+", icon: <Gauge size={20} /> },
-    { label: "Accessibility", value: "100", icon: <Smartphone size={20} /> },
-    { label: "Architecture", value: "Clean", icon: <Cpu size={20} /> },
-    { label: "Execution", value: "Fixed", icon: <Rocket size={20} /> },
+    { label: "Performance", value: "98+", icon: <Gauge size={28} strokeWidth={1.5} /> },
+    { label: "Accessibility", value: "100", icon: <Smartphone size={28} strokeWidth={1.5} /> },
+    { label: "Architecture", value: "Clean", icon: <Cpu size={28} strokeWidth={1.5} /> },
+    { label: "Execution", value: "Fixed", icon: <Rocket size={28} strokeWidth={1.5} /> },
   ];
 
   return (
