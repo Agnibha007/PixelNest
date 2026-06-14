@@ -38,7 +38,6 @@
 
 /* Desktop Progress Overrides */
 @media (min-width: 968px) {
-  .mobile-only-hero { display: none; }
   .configurator-progress {
     flex-direction: row;
     justify-content: center;
@@ -46,10 +45,22 @@
   }
 }
 
-/* Mobile Step Container */
+/* Container */
+.configurator-container {
+  max-width: 650px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.centered-content {
+  align-items: stretch;
+}
+
 .config-step-mobile {
   display: flex;
   flex-direction: column;
+  animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .mobile-step-title {
@@ -125,8 +136,31 @@
   transition: transform 0.2s ease;
 }
 
-.service-item-mobile:active .item-arrow {
-  transform: translateX(4px);
+/* Direct Inquiry Link */
+.direct-link-container {
+  margin-top: 32px;
+}
+
+.direct-inquiry-btn {
+  background: transparent;
+  border: 1px solid var(--border-main);
+  color: var(--text-dim);
+  padding: 10px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+}
+
+.direct-inquiry-btn:hover {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  background: rgba(245, 164, 0, 0.03);
 }
 
 /* Mobile Options List */
@@ -149,6 +183,7 @@
   color: var(--text-main);
   font-size: 0.9375rem;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .radio-circle {
@@ -174,7 +209,7 @@
   background: rgba(245, 164, 0, 0.05);
 }
 
-/* Mobile Form */
+/* Form Styles */
 .mobile-industrial-form {
   display: flex;
   flex-direction: column;
@@ -225,6 +260,8 @@
   display: flex;
   gap: 12px;
   width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .btn-grow { flex-grow: 1; }
@@ -232,7 +269,6 @@
 
 /* Desktop Overrides */
 @media (min-width: 968px) {
-  .configurator-sticky-footer { display: none; }
   .configurator-container { max-width: 800px; }
   .service-list-mobile {
     display: grid;
@@ -253,4 +289,9 @@
 
 .success-card {
   padding: 64px 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
