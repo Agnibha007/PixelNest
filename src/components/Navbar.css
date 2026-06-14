@@ -40,19 +40,19 @@
 }
 
 .logo-img {
-  height: 28px;
+  height: 36px;
   width: auto;
   object-fit: contain;
 }
 
 @media (min-width: 968px) {
-  .logo-img { height: 32px; }
+  .logo-img { height: 44px; }
 }
 
 .logo-text {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 800;
-  font-size: 1.125rem;
+  font-size: 1.35rem;
   color: var(--text-main);
   letter-spacing: -0.04em;
 }
