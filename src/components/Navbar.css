@@ -7,7 +7,7 @@
   height: 64px; /* Fixed height for mobile */
   display: flex;
   align-items: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: transparent;
 }
 
@@ -35,26 +35,29 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: var(--sp-2);
+  gap: var(--sp-3); /* Better spacing */
   z-index: 1002;
 }
 
 .logo-img {
-  height: 36px;
+  height: 30px; /* Refined mobile size */
   width: auto;
   object-fit: contain;
 }
 
 @media (min-width: 968px) {
-  .logo-img { height: 44px; }
+  .logo-img { 
+    height: 38px; /* Balanced desktop size (32-40px range) */
+  }
 }
 
 .logo-text {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 800;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   color: var(--text-main);
   letter-spacing: -0.04em;
+  margin-top: 1px; /* Optical alignment */
 }
 
 .nav-links-desktop {
@@ -100,7 +103,7 @@
 }
 
 .btn-small {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.25rem;
   font-size: 0.8125rem;
 }
 
