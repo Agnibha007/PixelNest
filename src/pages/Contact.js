@@ -127,11 +127,22 @@ const Contact = () => {
     };
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log("Transmission Submission:", submissionData);
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Transmission failed.');
+      }
+
       setSuccess(true);
     } catch (err) {
-      setError("Connection error. Try again.");
+      setError(err.message || "Connection error. Try again.");
     } finally {
       setIsSubmitting(false);
     }
