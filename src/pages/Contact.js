@@ -252,6 +252,8 @@ const Contact = () => {
                           <Mail size={14} /> Send a direct inquiry instead
                         </button>
                       </div>
+                      {/* Padding for sticky bottom button */}
+                      <div style={{ height: '100px' }}></div>
                     </div>
                   )}
 
@@ -273,6 +275,8 @@ const Contact = () => {
                           </button>
                         ))}
                       </div>
+                      {/* Padding for sticky bottom button */}
+                      <div style={{ height: '100px' }}></div>
                     </div>
                   )}
 
@@ -333,7 +337,7 @@ const Contact = () => {
                           ></textarea>
                         </div>
                         {/* Padding for sticky bottom button */}
-                        <div style={{ height: '80px' }}></div>
+                        <div style={{ height: '100px' }}></div>
                       </form>
                     </div>
                   )}
